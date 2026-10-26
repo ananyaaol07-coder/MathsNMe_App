@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/admin_dashboard_root" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#FFFDF8">
+<androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="#FFFDF8">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="76dp" android:paddingHorizontal="22dp" android:gravity="center_vertical" android:background="#FFFFFF">
+            <TextView android:id="@+id/admin_menu" android:layout_width="48dp" android:layout_height="48dp" android:gravity="center" android:text="☰" android:textColor="#0F172A" android:textSize="28sp" android:clickable="true" android:focusable="true" />
+            <ImageView android:layout_width="160dp" android:layout_height="52dp" android:src="@drawable/mathsnme_brand" android:scaleType="fitCenter" android:contentDescription="@string/app_name" />
+            <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+            <TextView android:id="@+id/admin_sign_out" android:layout_width="wrap_content" android:layout_height="48dp" android:gravity="center" android:paddingHorizontal="14dp" android:text="@string/admin_sign_out" android:textColor="#0F172A" android:textSize="14sp" android:textStyle="bold" android:background="@drawable/login_card" android:clickable="true" android:focusable="true" />
+        </LinearLayout>
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EADFB9" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="28dp" android:background="@drawable/landing_background">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/admin_workspace" android:textColor="#A47700" android:textSize="14sp" android:textStyle="bold" android:letterSpacing="0.16" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/admin_dashboard_title" android:textColor="#020617" android:textSize="34sp" android:textStyle="bold" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="@string/admin_dashboard_subtitle" android:textColor="#64748B" android:textSize="17sp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="34dp" android:orientation="vertical">
+                <LinearLayout style="@style/AdminMetricCard"><TextView style="@style/AdminMetricLabel" android:text="@string/admin_registered" /><TextView android:id="@+id/admin_registered_count" style="@style/AdminMetricValue" android:text="—" /></LinearLayout>
+                <LinearLayout style="@style/AdminMetricCard"><TextView style="@style/AdminMetricLabel" android:text="@string/admin_webinars" /><TextView style="@style/AdminMetricValue" android:text="—" /></LinearLayout>
+                <LinearLayout style="@style/AdminMetricCard"><TextView style="@style/AdminMetricLabel" android:text="@string/admin_worksheets" /><TextView style="@style/AdminMetricValue" android:text="57" /></LinearLayout>
+                <LinearLayout style="@style/AdminMetricCard"><TextView style="@style/AdminMetricLabel" android:text="@string/admin_practice" /><TextView style="@style/AdminMetricValue" android:text="@string/admin_not_tracked" /></LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="26dp" android:orientation="vertical" android:padding="24dp" android:background="@drawable/login_card">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/admin_grade_distribution" android:textColor="#0F172A" android:textSize="23sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="@string/admin_grade_subtitle" android:textColor="#64748B" android:textSize="16sp" />
+                <TextView android:id="@+id/admin_grade_seven_count" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="34dp" android:gravity="center" android:text="—" android:textColor="#0F172A" android:textSize="18sp" android:textStyle="bold" />
+                <View android:layout_width="44dp" android:layout_height="130dp" android:layout_gravity="center" android:layout_marginTop="10dp" android:background="#D4AF37" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="@string/admin_grade_seven" android:textColor="#64748B" android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <include layout="@layout/common_footer" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+    <View android:id="@+id/admin_sidebar_scrim" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#660F172A" android:visibility="gone" android:clickable="true" />
+    <ScrollView android:id="@+id/admin_sidebar" android:layout_width="330dp" android:layout_height="match_parent" android:background="#FFFDF8" android:visibility="gone" android:elevation="16dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="28dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="72dp" android:gravity="center_vertical">
+                <ImageView android:layout_width="76dp" android:layout_height="64dp" android:src="@drawable/mathsnme_brand" android:scaleType="fitCenter" android:contentDescription="@string/app_name" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/admin_sidebar_close" android:layout_width="48dp" android:layout_height="48dp" android:gravity="center" android:text="×" android:textColor="#A47700" android:textSize="32sp" android:background="@drawable/login_badge" android:clickable="true" android:focusable="true" />
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="42dp" android:gravity="center_vertical">
+                <TextView android:layout_width="54dp" android:layout_height="54dp" android:gravity="center" android:text="A" android:textColor="#A47700" android:textSize="24sp" android:textStyle="bold" android:background="@drawable/login_badge" />
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="16dp" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Admin" android:textColor="#0F172A" android:textSize="22sp" android:textStyle="bold" /><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="@string/admin_workspace_name" android:textColor="#64748B" android:textSize="16sp" /></LinearLayout>
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="38dp" android:background="#EADFB9" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="46dp" android:paddingStart="16dp" android:text="@string/admin_workspace" android:textColor="#A47700" android:textSize="14sp" android:textStyle="bold" android:letterSpacing="0.15" />
+            <TextView style="@style/AdminNavItem" android:text="⌑   Contact requests" />
+            <TextView style="@style/AdminNavItem" android:text="☑   IB grade requests" />
+            <TextView style="@style/AdminNavItem" android:text="⌂   IB resources" />
+            <TextView style="@style/AdminNavItem" android:text="⌂   VM resources" />
+            <TextView style="@style/AdminNavActive" android:text="⌂   Overview" />
+            <TextView style="@style/AdminNavItem" android:text="♧   Webinar registrations" />
+            <TextView style="@style/AdminNavItem" android:text="▣   Payments" />
+            <TextView style="@style/AdminNavItem" android:text="☑   Students" />
+            <TextView style="@style/AdminNavItem" android:text="♧   Goodies" />
+            <TextView android:id="@+id/admin_sidebar_sign_out" android:layout_width="match_parent" android:layout_height="58dp" android:layout_marginTop="80dp" android:gravity="center" android:text="@string/admin_sign_out" android:textColor="#0F172A" android:textSize="18sp" android:textStyle="bold" android:background="@drawable/login_submit" android:clickable="true" android:focusable="true" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

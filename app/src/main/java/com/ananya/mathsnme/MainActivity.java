@@ -15,7 +15,6 @@ import android.os.Build;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        androidx.core.view.WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -57,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         colourPhrase(R.id.hero_heading, "Vedic Maths", GOLD);
         colourPhrase(R.id.approach_heading, "A fraction of the time.", GOLD);
         scroll = findViewById(R.id.landing_scroll);
+        scroll.setNestedScrollingEnabled(true);
+        scroll.setFillViewport(true);
         findViewById(R.id.explore_paths).setOnClickListener(v -> scrollTo(R.id.learning_paths));
         findViewById(R.id.see_roadmap).setOnClickListener(v -> scrollTo(R.id.roadmap));
         findViewById(R.id.talk_to_us).setOnClickListener(v -> scrollTo(R.id.footer));
@@ -69,17 +70,12 @@ public class MainActivity extends AppCompatActivity {
             findViewById(id).setOnClickListener(v -> showNextScreenNotice(false));
         }
         findViewById(R.id.run_demo).setOnClickListener(v -> runDemo());
-        scroll.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, x, y, oldX, oldY) -> checkDemoVisibility());
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         started = true;
-        startHeroFloating();
-        // Wait for the restored scroll position and layout before checking visibility.
-        scroll.post(visibilityCheck);
     }
 
     private void startHeroFloating() {

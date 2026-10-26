@@ -3,7 +3,6 @@ package com.ananya.mathsnme;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.EditText;
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
@@ -11,7 +10,7 @@ import androidx.core.view.WindowCompat;
 public class RegisterActivity extends AppCompatActivity {
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
-        EdgeToEdge.enable(this);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
         setContentView(R.layout.activity_register);
         WindowCompat.getInsetsController(getWindow(), findViewById(R.id.register_root)).setAppearanceLightStatusBars(true);
         WindowCompat.getInsetsController(getWindow(), findViewById(R.id.register_root)).setAppearanceLightNavigationBars(true);

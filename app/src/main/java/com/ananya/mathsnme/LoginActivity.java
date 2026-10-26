@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -18,18 +17,24 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Source;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final String ADMIN_EMAIL = "mathsnme2020@gmail.com";
     private boolean adminLogin;
     private TextInputEditText email;
     private TextInputEditText password;
     private TextInputLayout emailLayout;
     private TextInputLayout passwordLayout;
     private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firestore;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
         setContentView(R.layout.activity_login);
         View root = findViewById(R.id.login_root);
         ViewCompat.setOnApplyWindowInsetsListener(root, (view, insets) -> {
@@ -45,11 +50,12 @@ public class LoginActivity extends AppCompatActivity {
         emailLayout = findViewById(R.id.login_email_layout);
         passwordLayout = findViewById(R.id.login_password_layout);
         firebaseAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
         adminLogin = savedInstanceState != null && savedInstanceState.getBoolean("admin_login");
         updateMode();
         findViewById(R.id.login_home).setOnClickListener(v -> finish());
         findViewById(R.id.login_logo).setOnClickListener(v -> finish());
-        findViewById(R.id.login_mode_toggle).setOnClickListener(v -> { adminLogin = !adminLogin; updateMode(); });
+        findViewById(R.id.login_mode_toggle).setOnClickListener(v -> startActivity(new Intent(this, AdminLoginActivity.class)));
         findViewById(R.id.login_submit).setOnClickListener(v -> submitLogin());
         password.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) { submitLogin(); return true; }
@@ -66,8 +72,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void submitLogin() {
-        String address = email.getText() == null ? "" : email.getText().toString().trim();
-        boolean validEmail = Patterns.EMAIL_ADDRESS.matcher(address).matches();
+        String address = adminLogin ? ADMIN_EMAIL : (email.getText() == null ? "" : email.getText().toString().trim());
+        boolean validEmail = adminLogin || Patterns.EMAIL_ADDRESS.matcher(address).matches();
         boolean hasPassword = password.getText() != null && password.getText().length() > 0;
         emailLayout.setError(validEmail ? null : getString(R.string.login_invalid_email));
         passwordLayout.setError(hasPassword ? null : getString(R.string.login_required_password));
@@ -77,11 +83,49 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(address, password.getText().toString())
                 .addOnCompleteListener(task -> {
                     findViewById(R.id.login_submit).setEnabled(true);
-                    if (task.isSuccessful()) {
+                    if (task.isSuccessful() && adminLogin) {
+                        verifyAdminAccess();
+                    } else if (task.isSuccessful()) {
                         showNotice(R.string.login_success_title, R.string.login_success);
                     } else {
-                        passwordLayout.setError(getString(R.string.login_failed));
+                        passwordLayout.setError(loginFailureMessage(task.getException()));
                     }
+                });
+    }
+
+    private String loginFailureMessage(Exception error) {
+        if (error instanceof FirebaseAuthException) {
+            String code = ((FirebaseAuthException) error).getErrorCode();
+            if ("ERROR_INVALID_LOGIN_CREDENTIALS".equals(code)
+                    || "ERROR_WRONG_PASSWORD".equals(code)
+                    || "ERROR_USER_NOT_FOUND".equals(code)) {
+                return getString(R.string.login_invalid_credentials);
+            }
+            if ("ERROR_NETWORK_REQUEST_FAILED".equals(code)) {
+                return getString(R.string.login_network_failed);
+            }
+        }
+        return getString(R.string.login_failed);
+    }
+
+    private void verifyAdminAccess() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (user == null) {
+            passwordLayout.setError(getString(R.string.login_admin_failed));
+            return;
+        }
+        firestore.collection("admins").document(user.getUid()).get(Source.SERVER)
+                .addOnSuccessListener(document -> {
+                    if (Boolean.TRUE.equals(document.getBoolean("active"))) {
+                        showNotice(R.string.login_admin_success_title, R.string.login_admin_success);
+                    } else {
+                        firebaseAuth.signOut();
+                        passwordLayout.setError(getString(R.string.login_admin_failed));
+                    }
+                })
+                .addOnFailureListener(error -> {
+                    firebaseAuth.signOut();
+                    passwordLayout.setError(getString(R.string.login_admin_failed));
                 });
     }
 
