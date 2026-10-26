@@ -44,11 +44,11 @@
             </LinearLayout>
             <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="38dp" android:background="#EADFB9" />
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="46dp" android:paddingStart="16dp" android:text="@string/admin_workspace" android:textColor="#A47700" android:textSize="14sp" android:textStyle="bold" android:letterSpacing="0.15" />
+            <TextView style="@style/AdminNavActive" android:text="⌂   Overview" />
             <TextView style="@style/AdminNavItem" android:text="⌑   Contact requests" />
             <TextView style="@style/AdminNavItem" android:text="☑   IB grade requests" />
             <TextView style="@style/AdminNavItem" android:text="⌂   IB resources" />
             <TextView style="@style/AdminNavItem" android:text="⌂   VM resources" />
-            <TextView style="@style/AdminNavActive" android:text="⌂   Overview" />
             <TextView style="@style/AdminNavItem" android:text="♧   Webinar registrations" />
             <TextView style="@style/AdminNavItem" android:text="▣   Payments" />
             <TextView style="@style/AdminNavItem" android:text="☑   Students" />

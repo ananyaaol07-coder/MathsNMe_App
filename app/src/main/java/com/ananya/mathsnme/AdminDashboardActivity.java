@@ -6,7 +6,10 @@ import android.widget.TextView;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -16,8 +19,15 @@ public class AdminDashboardActivity extends AppCompatActivity {
         super.onCreate(state);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
         setContentView(R.layout.activity_admin_dashboard);
-        WindowCompat.getInsetsController(getWindow(), findViewById(R.id.admin_dashboard_root)).setAppearanceLightStatusBars(true);
-        WindowCompat.getInsetsController(getWindow(), findViewById(R.id.admin_dashboard_root)).setAppearanceLightNavigationBars(true);
+        View root = findViewById(R.id.admin_dashboard_root);
+        ViewCompat.setOnApplyWindowInsetsListener(root, (view, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            view.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+            return insets;
+        });
+        ViewCompat.requestApplyInsets(root);
+        WindowCompat.getInsetsController(getWindow(), root).setAppearanceLightStatusBars(true);
+        WindowCompat.getInsetsController(getWindow(), root).setAppearanceLightNavigationBars(true);
         View signOut = findViewById(R.id.admin_sign_out);
         signOut.setOnClickListener(view -> signOut());
         findViewById(R.id.admin_sidebar_sign_out).setOnClickListener(view -> signOut());
@@ -42,6 +52,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
     private void signOut() {
             FirebaseAuth.getInstance().signOut();
+            getSharedPreferences("session", MODE_PRIVATE).edit().clear().apply();
             startActivity(new Intent(this, AdminLoginActivity.class));
             finish();
     }

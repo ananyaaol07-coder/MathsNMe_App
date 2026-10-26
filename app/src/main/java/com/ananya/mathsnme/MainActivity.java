@@ -22,6 +22,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.widget.NestedScrollView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Locale;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSharedPreferences("session", MODE_PRIVATE).getBoolean("remember_login", false)
+                && FirebaseAuth.getInstance().getCurrentUser() != null) {
+            String role = getSharedPreferences("session", MODE_PRIVATE).getString("role", "student");
+            startActivity(new Intent(this, "admin".equals(role) ? AdminDashboardActivity.class : StudentDashboardActivity.class));
+            finish();
+            return;
+        }
         androidx.core.view.WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

@@ -61,4 +61,19 @@
         <item name="android:background">@drawable/login_submit</item>
         <item name="android:textColor">#020617</item>
     </style>
+    <style name="StudentCourseCard">
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">112dp</item><item name="android:layout_marginBottom">18dp</item><item name="android:gravity">center_vertical</item><item name="android:paddingHorizontal">24dp</item><item name="android:textColor">#0F172A</item><item name="android:textSize">18sp</item><item name="android:textStyle">bold</item><item name="android:lineSpacingExtra">8dp</item><item name="android:background">@drawable/login_card</item>
+    </style>
+    <style name="StudentCourseDisabled" parent="StudentCourseCard"><item name="android:textColor">#94A3B8</item></style>
+    <style name="StudentMetricCard">
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">210dp</item><item name="android:layout_marginBottom">20dp</item><item name="android:gravity">center_vertical</item><item name="android:padding">28dp</item><item name="android:textColor">#0F172A</item><item name="android:textSize">17sp</item><item name="android:textStyle">bold</item><item name="android:lineSpacingExtra">8dp</item><item name="android:background">@drawable/login_card</item>
+    </style>
+    <style name="StudentMetricContainer">
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">236dp</item><item name="android:layout_marginBottom">24dp</item><item name="android:orientation">vertical</item><item name="android:padding">32dp</item><item name="android:background">@drawable/login_card</item>
+    </style>
+    <style name="StudentMetricValue"><item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item><item name="android:textColor">#020617</item><item name="android:textSize">34sp</item><item name="android:textStyle">bold</item></style>
+    <style name="StudentMetricLabel"><item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item><item name="android:layout_marginTop">8dp</item><item name="android:textColor">#64748B</item><item name="android:textSize">17sp</item></style>
+    <style name="StudentNavItem"><item name="android:layout_width">match_parent</item><item name="android:layout_height">68dp</item><item name="android:gravity">center_vertical</item><item name="android:paddingHorizontal">20dp</item><item name="android:textColor">#475569</item><item name="android:textSize">17sp</item><item name="android:textStyle">bold</item></style>
+    <style name="StudentNavActive" parent="StudentNavItem"><item name="android:background">@drawable/login_badge</item><item name="android:textColor">#8A6500</item></style>
+    <style name="StudentNavDisabled" parent="StudentNavItem"><item name="android:textColor">#94A3B8</item></style>
 </resources>

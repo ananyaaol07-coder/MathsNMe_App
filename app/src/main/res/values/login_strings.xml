@@ -13,6 +13,7 @@
     <string name="login_password">Password</string>
     <string name="login_password_hint">Enter your password</string>
     <string name="login_forgot">Forgot password?</string>
+    <string name="login_remember">Remember me on this device</string>
     <string name="login_submit">Log in to MathsNMe  →</string>
     <string name="login_invalid_email">Enter a valid email address</string>
     <string name="login_required_password">Enter your password</string>
@@ -46,6 +47,9 @@
     <string name="admin_grade_subtitle">Registered students by grade</string>
     <string name="admin_grade_seven">Grade 7</string>
     <string name="admin_workspace_name">MathsNMe workspace</string>
+    <string name="student_welcome_default">Welcome back, Ananya!</string>
+    <string name="student_welcome">Welcome back, %1$s!</string>
+    <string name="student_subtitle">Ready to make progress in Maths today?</string>
     <string name="login_create_notice">Account registration will be available when the sign-up screen and authentication service are connected.</string>
     <string name="login_reset_notice">Password reset is not connected yet. No reset email has been sent.</string>
     <string name="login_lock_description">Secure login</string>

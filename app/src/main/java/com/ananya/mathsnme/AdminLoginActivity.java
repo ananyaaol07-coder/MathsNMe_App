@@ -66,6 +66,8 @@ public class AdminLoginActivity extends AppCompatActivity {
         firestore.collection("admins").document(user.getUid()).get(Source.SERVER)
                 .addOnSuccessListener(document -> {
                     if (Boolean.TRUE.equals(document.getBoolean("active"))) {
+                        getSharedPreferences("session", MODE_PRIVATE).edit()
+                                .putBoolean("remember_login", true).putString("role", "admin").apply();
                         startActivity(new Intent(this, AdminDashboardActivity.class));
                         finish();
                     } else {

@@ -6,6 +6,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
+import android.widget.CheckBox;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         passwordLayout = findViewById(R.id.login_password_layout);
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        ((CheckBox) findViewById(R.id.login_remember)).setChecked(
+                getSharedPreferences("session", MODE_PRIVATE).getBoolean("remember_login", true));
         adminLogin = savedInstanceState != null && savedInstanceState.getBoolean("admin_login");
         updateMode();
         findViewById(R.id.login_home).setOnClickListener(v -> finish());
@@ -86,11 +89,20 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful() && adminLogin) {
                         verifyAdminAccess();
                     } else if (task.isSuccessful()) {
-                        showNotice(R.string.login_success_title, R.string.login_success);
+                        saveSession("student");
+                        startActivity(new Intent(this, StudentDashboardActivity.class));
+                        finish();
                     } else {
                         passwordLayout.setError(loginFailureMessage(task.getException()));
                     }
                 });
+    }
+
+    private void saveSession(String role) {
+        boolean remember = ((CheckBox) findViewById(R.id.login_remember)).isChecked();
+        getSharedPreferences("session", MODE_PRIVATE).edit()
+                .putBoolean("remember_login", remember)
+                .putString("role", role).apply();
     }
 
     private String loginFailureMessage(Exception error) {

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/student_dashboard_root" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#FFFDF8">
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:scrollbars="vertical">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="76dp" android:paddingHorizontal="22dp" android:gravity="center_vertical" android:background="#FFFFFF">
+                <TextView android:id="@+id/student_menu" android:layout_width="52dp" android:layout_height="52dp" android:gravity="center" android:text="☰" android:textColor="#334155" android:textSize="29sp" android:clickable="true" android:focusable="true" android:contentDescription="Open menu" />
+                <TextView android:layout_width="1dp" android:layout_height="1dp" android:text="·" />
+                <TextView android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:layout_marginStart="12dp" android:gravity="center" android:text="⚡  0 streak" android:textColor="#334155" android:textSize="16sp" android:textStyle="bold" android:background="@drawable/login_card" />
+                <TextView android:layout_width="66dp" android:layout_height="66dp" android:layout_marginStart="12dp" android:gravity="center" android:text="20↯\nXP" android:textColor="#9A7000" android:textSize="16sp" android:textStyle="bold" android:background="@drawable/login_badge" />
+                <TextView android:id="@+id/student_profile" android:layout_width="48dp" android:layout_height="48dp" android:layout_marginStart="10dp" android:gravity="center" android:text="A" android:textColor="#9A7000" android:textSize="20sp" android:textStyle="bold" android:background="@drawable/login_badge" android:clickable="true" android:focusable="true" android:contentDescription="Open profile" />
+            </LinearLayout>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EADFB9" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="28dp" android:background="@drawable/landing_background">
+                <TextView android:id="@+id/student_welcome" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/student_welcome_default" android:textColor="#020617" android:textSize="34sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/student_subtitle" android:textColor="#475569" android:textSize="18sp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="34dp" android:orientation="vertical" android:padding="24dp" android:background="@drawable/login_card">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="MY DAILY COMMITMENT" android:textColor="#A47700" android:textSize="15sp" android:textStyle="bold" android:letterSpacing="0.1" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="18dp" android:text="18:00 every day" android:textColor="#0F172A" android:textSize="29sp" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Next completion window: 5:50 PM – 6:10 PM" android:textColor="#475569" android:textSize="16sp" />
+                    <TextView android:id="@+id/student_practice" android:layout_width="match_parent" android:layout_height="58dp" android:layout_marginTop="26dp" android:gravity="center" android:text="Practise now" android:textColor="#020617" android:textSize="19sp" android:textStyle="bold" android:background="@drawable/login_submit" android:clickable="true" android:focusable="true" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="26dp" android:text="Finish a worksheet in the window: +70 coins &amp; +1 streak day. Miss it: −20 coins &amp; streak back to 0.\n\nYou can always practise outside the window. Coins stop at 0." android:textColor="#475569" android:textSize="16sp" android:lineSpacingExtra="4dp" />
+                </LinearLayout>
+                <LinearLayout android:id="@+id/student_vedic" android:layout_width="match_parent" android:layout_height="144dp" android:layout_marginTop="28dp" android:layout_marginBottom="18dp" android:padding="28dp" android:gravity="center_vertical" android:background="@drawable/login_card" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="72dp" android:layout_height="72dp" android:padding="19dp" android:src="@drawable/landing_calculator" android:background="@drawable/login_badge" android:contentDescription="Vedic Mathematics" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="24dp" android:orientation="vertical">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Vedic Mathematics" android:textColor="#020617" android:textSize="23sp" android:textStyle="bold" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Speed and calculation skills" android:textColor="#64748B" android:textSize="17sp" />
+                    </LinearLayout>
+                    <TextView android:layout_width="32dp" android:layout_height="match_parent" android:gravity="center" android:text="→" android:textColor="#B8860B" android:textSize="34sp" />
+                </LinearLayout>
+                <LinearLayout android:id="@+id/student_ib" android:layout_width="match_parent" android:layout_height="144dp" android:layout_marginBottom="18dp" android:padding="28dp" android:gravity="center_vertical" android:background="@drawable/login_card" android:clickable="true" android:focusable="true">
+                    <ImageView android:layout_width="72dp" android:layout_height="72dp" android:padding="18dp" android:src="@drawable/landing_brain" android:background="@drawable/login_badge" android:contentDescription="IB Mathematics" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="24dp" android:orientation="vertical">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="IB Mathematics" android:textColor="#020617" android:textSize="23sp" android:textStyle="bold" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Conceptual problem solving" android:textColor="#64748B" android:textSize="17sp" />
+                    </LinearLayout>
+                    <TextView android:layout_width="32dp" android:layout_height="match_parent" android:gravity="center" android:text="→" android:textColor="#B8860B" android:textSize="34sp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="144dp" android:layout_marginBottom="18dp" android:padding="28dp" android:gravity="center_vertical" android:background="@drawable/login_card" android:alpha="0.72">
+                    <ImageView android:layout_width="72dp" android:layout_height="72dp" android:padding="18dp" android:src="@drawable/landing_trophy" android:background="#F1F5F9" android:contentDescription="Olympiad locked" />
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="24dp" android:orientation="vertical">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Olympiad  🔒" android:textColor="#64748B" android:textSize="23sp" android:textStyle="bold" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Unlocks after 1 year" android:textColor="#94A3B8" android:textSize="17sp" android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout style="@style/StudentMetricContainer">
+                    <ImageView android:layout_width="60dp" android:layout_height="60dp" android:padding="15dp" android:src="@drawable/landing_trophy" android:background="@drawable/login_badge" android:contentDescription="Current level" />
+                    <TextView style="@style/StudentMetricValue" android:layout_marginTop="36dp" android:text="Not set" />
+                    <TextView style="@style/StudentMetricLabel" android:text="Current level" />
+                </LinearLayout>
+                <LinearLayout style="@style/StudentMetricContainer">
+                    <TextView android:layout_width="60dp" android:layout_height="60dp" android:gravity="center" android:text="◷" android:textColor="#2563EB" android:textSize="38sp" android:background="@drawable/student_badge_blue" />
+                    <TextView style="@style/StudentMetricValue" android:layout_marginTop="36dp" android:text="0 / 60 min" />
+                    <TextView style="@style/StudentMetricLabel" android:text="Weekly practice" />
+                </LinearLayout>
+                <LinearLayout style="@style/StudentMetricContainer">
+                    <TextView android:layout_width="60dp" android:layout_height="60dp" android:gravity="center" android:text="▤" android:textColor="#16A34A" android:textSize="31sp" android:background="@drawable/student_badge_green" />
+                    <TextView style="@style/StudentMetricValue" android:layout_marginTop="36dp" android:text="2" />
+                    <TextView style="@style/StudentMetricLabel" android:text="Activities done" />
+                </LinearLayout>
+                <LinearLayout style="@style/StudentMetricContainer">
+                    <TextView android:layout_width="60dp" android:layout_height="60dp" android:gravity="center" android:text="▥" android:textColor="#A855F7" android:textSize="31sp" android:background="@drawable/student_badge_purple" />
+                    <TextView style="@style/StudentMetricValue" android:layout_marginTop="36dp" android:text="—" />
+                    <TextView style="@style/StudentMetricLabel" android:text="Average accuracy" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="22dp" android:orientation="vertical" android:padding="24dp" android:background="@drawable/login_card">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Weekly goal" android:textColor="#64748B" android:textSize="17sp" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="60 minutes" android:textColor="#0F172A" android:textSize="28sp" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="12dp" android:layout_marginTop="32dp" android:background="#EEF2F7" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="0 minutes completed                                             0%" android:textColor="#64748B" android:textSize="14sp" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="26dp" android:padding="18dp" android:text="Build your daily habit by completing a worksheet in your committed time window." android:textColor="#475569" android:textSize="15sp" android:background="#F8F6F0" />
+                </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/common_footer" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <View android:id="@+id/student_sidebar_scrim" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#660F172A" android:visibility="gone" android:clickable="true" />
+    <LinearLayout android:id="@+id/student_sidebar" android:layout_width="300dp" android:layout_height="match_parent" android:orientation="vertical" android:padding="28dp" android:background="#FFFFFF" android:visibility="gone" android:elevation="16dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="128dp" android:gravity="top">
+            <ImageView android:layout_width="120dp" android:layout_height="110dp" android:src="@drawable/mathsnme_brand" android:scaleType="fitCenter" android:contentDescription="@string/app_name" />
+            <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+            <TextView android:id="@+id/student_sidebar_close" android:layout_width="50dp" android:layout_height="50dp" android:gravity="center" android:text="×" android:textColor="#64748B" android:textSize="30sp" android:background="@drawable/login_card" android:clickable="true" />
+        </LinearLayout>
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EADFB9" />
+        <TextView android:id="@+id/student_nav_overview" style="@style/StudentNavActive" android:layout_marginTop="48dp" android:text="▦   Overview" />
+        <TextView android:id="@+id/student_nav_vedic" style="@style/StudentNavItem" android:text="▦   Vedic Mathematics" />
+        <TextView android:id="@+id/student_nav_ib" style="@style/StudentNavItem" android:text="♧   IB Mathematics" />
+        <TextView style="@style/StudentNavDisabled" android:text="♜   Olympiad                                      🔒" />
+        <TextView android:id="@+id/student_nav_progress" style="@style/StudentNavItem" android:text="▥   Progress" />
+        <TextView android:id="@+id/student_nav_reports" style="@style/StudentNavItem" android:text="▤   Reports" />
+        <TextView android:id="@+id/student_nav_payments" style="@style/StudentNavItem" android:text="▣   Payments" />
+        <TextView android:id="@+id/student_nav_shop" style="@style/StudentNavItem" android:text="▣   Shop" />
+        <TextView android:id="@+id/student_nav_settings" style="@style/StudentNavItem" android:text="⚙   Settings" />
+        <Space android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EADFB9" />
+        <TextView android:id="@+id/student_logout" android:layout_width="match_parent" android:layout_height="66dp" android:gravity="center_vertical" android:paddingStart="22dp" android:text="⇥   Log out" android:textColor="#DC2626" android:textSize="18sp" android:textStyle="bold" android:clickable="true" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/student_profile_card" android:layout_width="330dp" android:layout_height="wrap_content" android:layout_gravity="top|end" android:layout_marginTop="84dp" android:layout_marginEnd="20dp" android:orientation="vertical" android:padding="28dp" android:background="@drawable/login_card" android:visibility="gone" android:elevation="16dp" android:clickable="true" android:focusable="true">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ananya Kolluru" android:textColor="#020617" android:textSize="20sp" android:textStyle="bold" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="ananyaaol07@gmail.com" android:textColor="#64748B" android:textSize="16sp" />
+        <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="20dp" android:background="#EADFB9" />
+        <TextView android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="10dp" android:gravity="center_vertical" android:text="♙   Profile" android:textColor="#334155" android:textSize="18sp" android:textStyle="bold" />
+        <TextView android:id="@+id/student_profile_logout" android:layout_width="match_parent" android:layout_height="56dp" android:gravity="center_vertical" android:text="⇥   Log out" android:textColor="#DC2626" android:textSize="18sp" android:textStyle="bold" android:clickable="true" android:focusable="true" />
+    </LinearLayout>
+</FrameLayout>
