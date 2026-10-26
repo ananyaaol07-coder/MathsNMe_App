@@ -1,0 +1,4 @@
+<resources>
+    <string-array name="register_grades"><item>Select grade</item><item>Grade 1</item><item>Grade 2</item><item>Grade 3</item><item>Grade 4</item><item>Grade 5</item></string-array>
+    <string-array name="register_boards"><item>Select board</item><item>CBSE</item><item>ICSE</item><item>State board</item></string-array>
+</resources>
